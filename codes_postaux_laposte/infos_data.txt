@@ -1,0 +1,19 @@
+La base officielle des codes postaux est un jeu de données qui fournit la correspondance entre les codes postaux et les codes INSEE des communes, de France (métropole et DOM), des TOM, ainsi que de MONACO.
+
+Ce jeu de données comprend :
+
+- Le nom de la commune
+
+- Le code INSEE de la commune
+
+- La ligne 5 de l'adresse postale : précision du lieu-dit associé ou du nom de la commune déléguée associée
+
+- Le code postal de la commune
+
+- Le libellé d'acheminement
+
+Identifiant du jeu de données : laposte_hexasmal
+
+version 2018
+
+téléchargé le 3 juin 2019 sur le site : https://datanova.laposte.fr/page/accueil/
