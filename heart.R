@@ -1,6 +1,6 @@
 rm(list=ls())
 
-# Library
+# Packages
 library(shiny)
 library(shinydashboard)
 library(dplyr)
@@ -14,7 +14,7 @@ library(gtools)
 library(shinycssloaders)
 library(rgdal)
 
-setwd(".../HEART") # To change
+setwd(".../HEART-main") # To change
 
 
 # Databse dlnm
