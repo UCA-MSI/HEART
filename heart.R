@@ -105,7 +105,7 @@ data <- data %>% arrange(cp,date)
 
 pat_dlnm <- merge(pat_dlnm,nameszip,by="cp")
 
-# remove zones with less 18 cardiac dyspnea
+# remove zones with less than 18 cardiac dyspnea
 pat_dlnm <- pat_dlnm %>% group_by(cp) %>% mutate(tot=sum(Y))
 pat_dlnm <- pat_dlnm %>% filter(tot>=18)
 
@@ -242,8 +242,8 @@ body <- dashboardBody(
                   conditionalPanel(condition = "input.input_var2 == 'pred_O3'",uiOutput("sliderO3AA"),uiOutput("sliderO3BB"),uiOutput("sliderO3CC"),uiOutput("sliderO3DD")),
                   conditionalPanel(condition = "input.input_var2 == 'pred_PM10'",uiOutput("sliderPM10AA"),uiOutput("sliderPM10BB"),uiOutput("sliderPM10CC"),uiOutput("sliderPM10DD")),
                   mainPanel(plotOutput("prediction3",height = 400,width=500)%>% withSpinner(type =  7,size  = 2),plotOutput("prediction4",height = 400,width=500)%>% withSpinner(type =  7,size  = 2)),status="success",width=6,title="Zone 2", solidHeader = TRUE),
+              
             ))
-    
     
   ))
 
@@ -301,51 +301,51 @@ server <- function(input, output) {
   })
   
   output$sliderNO2A <- renderUI({
-    sliderInput("NO2A", "First level (dark blue)", min=0, max=max(round(dataselect2()$max_NO2max),0), value=50)
+    sliderInput("NO2A", "First level (dark blue)", min=50, max=max(trunc(dataselect2()$max_NO2max)), value=50)
   })
   
   output$sliderNO2B <- renderUI({
-    sliderInput("NO2B", "Second level (cyan)", min=0, max=max(round(dataselect2()$max_NO2max),0), value=50)
+    sliderInput("NO2B", "Second level (cyan)", min=50, max=max(trunc(dataselect2()$max_NO2max)), value=50)
   })
   
   output$sliderNO2C <- renderUI({
-    sliderInput("NO2C", "Third level (orange)", min=0, max=max(round(dataselect2()$max_NO2max),0), value=50)
+    sliderInput("NO2C", "Third level (orange)", min=50, max=max(trunc(dataselect2()$max_NO2max)), value=50)
   })
   
   output$sliderNO2D <- renderUI({
-    sliderInput("NO2D", "Fourth level (red)", min=0, max=max(round(dataselect2()$max_NO2max),0), value=50)
+    sliderInput("NO2D", "Fourth level (red)", min=50, max=max(trunc(dataselect2()$max_NO2max)), value=50)
   })
   
   output$sliderO3A <- renderUI({
-    sliderInput("O3A", "First level (dark blue)", min=0, max=max(round(dataselect2()$max_O3max),0), value=40)
+    sliderInput("O3A", "First level (dark blue)", min=40, max=max(trunc(dataselect2()$max_O3max)), value=40)
   })
   
   output$sliderO3B <- renderUI({
-    sliderInput("O3B", "Second level (cyan)", min=0, max=max(round(dataselect2()$max_O3max),0), value=40)
+    sliderInput("O3B", "Second level (cyan)", min=40, max=max(trunc(dataselect2()$max_O3max)), value=40)
   })
   
   output$sliderO3C <- renderUI({
-    sliderInput("O3C", "Third level (orange)", min=0, max=max(round(dataselect2()$max_O3max),0), value=40)
+    sliderInput("O3C", "Third level (orange)", min=40, max=max(trunc(dataselect2()$max_O3max)), value=40)
   })
   
   output$sliderO3D <- renderUI({
-    sliderInput("O3D", "Fourth level (red)", min=0, max=max(round(dataselect2()$max_O3max),0), value=40)
+    sliderInput("O3D", "Fourth level (red)", min=40, max=max(trunc(dataselect2()$max_O3max)), value=40)
   })
   
   output$sliderPM10A <- renderUI({
-    sliderInput("PM10A", "First level (dark blue)", min=0, max=max(round(dataselect2()$moy_PM10avg),0), value=10)
+    sliderInput("PM10A", "First level (dark blue)", min=10, max=max(trunc(dataselect2()$moy_PM10avg)), value=10)
   })
   
   output$sliderPM10B <- renderUI({
-    sliderInput("PM10B", "Second level (cyan)", min=0, max=max(round(dataselect2()$moy_PM10avg),0), value=10)
+    sliderInput("PM10B", "Second level (cyan)", min=10, max=max(trunc(dataselect2()$moy_PM10avg)), value=10)
   })
   
   output$sliderPM10C <- renderUI({
-    sliderInput("PM10C", "Third level (orange)", min=0, max=max(round(dataselect2()$moy_PM10avg),0), value=10)
+    sliderInput("PM10C", "Third level (orange)", min=10, max=max(trunc(dataselect2()$moy_PM10avg)), value=10)
   })
   
   output$sliderPM10D <- renderUI({
-    sliderInput("PM10D", "Fourth level (red)", min=0, max=max(round(dataselect2()$moy_PM10avg),0), value=10)
+    sliderInput("PM10D", "Fourth level (red)", min=10, max=max(trunc(dataselect2()$moy_PM10avg)), value=10)
   })
   
   output$prediction <- renderPlot({
@@ -522,51 +522,51 @@ server <- function(input, output) {
   })
   
   output$sliderNO2AA <- renderUI({
-    sliderInput("NO2AA", "First level (dark blue)", min=0, max=max(round(dataselect3()$max_NO2max),0), value=50)
+    sliderInput("NO2AA", "First level (dark blue)", min=50, max=max(trunc(dataselect3()$max_NO2max)), value=50)
   })
   
   output$sliderNO2BB <- renderUI({
-    sliderInput("NO2BB", "Second level (cyan)", min=0, max=max(round(dataselect3()$max_NO2max),0), value=50)
+    sliderInput("NO2BB", "Second level (cyan)", min=50, max=max(trunc(dataselect3()$max_NO2max)), value=50)
   })
   
   output$sliderNO2CC <- renderUI({
-    sliderInput("NO2CC", "Third level (orange)", min=0, max=max(round(dataselect3()$max_NO2max),0), value=50)
+    sliderInput("NO2CC", "Third level (orange)", min=50, max=max(trunc(dataselect3()$max_NO2max)), value=50)
   })
   
   output$sliderNO2DD <- renderUI({
-    sliderInput("NO2DD", "Fourth level (red)", min=0, max=max(round(dataselect3()$max_NO2max),0), value=50)
+    sliderInput("NO2DD", "Fourth level (red)", min=50, max=max(trunc(dataselect3()$max_NO2max)), value=50)
   })
   
   output$sliderO3AA <- renderUI({
-    sliderInput("O3AA", "First level (dark blue)", min=0, max=max(round(dataselect3()$max_O3max),0), value=40)
+    sliderInput("O3AA", "First level (dark blue)", min=40, max=max(trunc(dataselect3()$max_O3max)), value=40)
   })
   
   output$sliderO3BB <- renderUI({
-    sliderInput("O3BB", "Second level (cyan)", min=0, max=max(round(dataselect3()$max_O3max),0), value=40)
+    sliderInput("O3BB", "Second level (cyan)", min=40, max=max(trunc(dataselect3()$max_O3max)), value=40)
   })
   
   output$sliderO3CC <- renderUI({
-    sliderInput("O3CC", "Third level (orange)", min=0, max=max(round(dataselect3()$max_O3max),0), value=40)
+    sliderInput("O3CC", "Third level (orange)", min=40, max=max(trunc(dataselect3()$max_O3max)), value=40)
   })
   
   output$sliderO3DD <- renderUI({
-    sliderInput("O3DD", "Fourth level (red)", min=0, max=max(round(dataselect3()$max_O3max),0), value=40)
+    sliderInput("O3DD", "Fourth level (red)", min=40, max=max(trunc(dataselect3()$max_O3max)), value=40)
   })
   
   output$sliderPM10AA <- renderUI({
-    sliderInput("PM10AA", "First level (dark blue)", min=0, max=max(round(dataselect3()$moy_PM10avg),0), value=10)
+    sliderInput("PM10AA", "First level (dark blue)", min=10, max=max(trunc(dataselect3()$moy_PM10avg)), value=10)
   })
   
   output$sliderPM10BB <- renderUI({
-    sliderInput("PM10BB", "Second level (cyan)", min=0, max=max(round(dataselect3()$moy_PM10avg),0), value=10)
+    sliderInput("PM10BB", "Second level (cyan)", min=10, max=max(trunc(dataselect3()$moy_PM10avg)), value=10)
   })
   
   output$sliderPM10CC <- renderUI({
-    sliderInput("PM10CC", "Third level (orange)", min=0, max=max(round(dataselect3()$moy_PM10avg),0), value=10)
+    sliderInput("PM10CC", "Third level (orange)", min=10, max=max(trunc(dataselect3()$moy_PM10avg)), value=10)
   })
   
   output$sliderPM10DD <- renderUI({
-    sliderInput("PM10DD", "Fourth level (red)", min=0, max=max(round(dataselect3()$moy_PM10avg),0), value=10)
+    sliderInput("PM10DD", "Fourth level (red)", min=10, max=max(trunc(dataselect3()$moy_PM10avg)), value=10)
   })
   
   
